@@ -1,0 +1,28 @@
+{
+  "name": "cyf-node-challenges",
+  "version": "1.0.0",
+  "description": "Node Challanges created for Students at CodeYourFuture.",
+  "main": "index.js",
+  "scripts": {
+    "start" : "node server",
+    "dev": "nodemon server"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeYourFuture/cyf-node-challenges.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CodeYourFuture/cyf-node-challenges/issues"
+  },
+  "homepage": "https://github.com/CodeYourFuture/cyf-node-challenges#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
