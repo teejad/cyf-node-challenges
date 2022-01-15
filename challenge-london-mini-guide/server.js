@@ -7,12 +7,46 @@ const PORT = process.env.PORT || 8009;
  const stratford = require("./data/Stratford.json");
 const harrow = require("./data/Harrow.json");
 const heathrow = require("./data/Heathrow.json");
+
+const cities= { stratford: stratford , harrow: harrow, heathrow: heathrow } 
 // Now register handlers for some routes:
 
-// import the data of pharmacies from the harrow json file
 app.get("/", (req, res) => {
-    res.send("Hello, I am a pharmacy server! Ask me for /pharmacies in a specific area /colleges  return all the colleges in the area /doctors  return all the doctors in the area");
+    res.send("Hello, I am a city mini guide server! Ask me for /pharmacies in a specific /city /colleges  return all the colleges in the /city /doctors  return all the doctors in the area");
     });
+
+
+
+
+
+
+
+// 
+app.get("/:city/:category/search" , (req, res) => {
+    
+    const city = req.params.city;
+    const category = req.params.category;
+    const searchTerm = req.query.term;
+
+    const cityData = cities[city][category].filter((item) => { item["city"].toLowerCase().includes(searchTerm.toLowerCase())
+    });
+    res.status(200).json(cityData);
+});
+
+
+app.get("/:city", (req, res) => {
+    const city = req.params.city;
+    res.json(cities[city]);
+});
+
+app.get("/:city/:category" , (req, res) => {
+    const city = req.params.city;
+    const category = req.params.category;
+    res.json(cities[city][category]);
+});
+
+
+
 
 // Return pharmacies in Stratford
 app.get("/pharmacies", (req, res) => {
